@@ -15,14 +15,14 @@ local function startAutoTrain()
             [2] = "Desert"
         }
         game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Training"):WaitForChild("Train"):FireServer(unpack(args))
-        wait(0.1) -- Adjust the wait time as needed
+        wait(0.1)
     end
 end
 
 local function startAutoSpin()
     while autoSpin do
         game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Gifts"):WaitForChild("RequestSpinReward"):InvokeServer()
-        wait(0.1) -- Adjust the wait time as needed
+        wait(0.1) 
     end
 end
 
@@ -32,16 +32,15 @@ local function startAutoRebirth()
             [1] = "Wins"
         }
         game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Rebirth"):WaitForChild("Rebirth"):InvokeServer(unpack(args))
-        wait(0.1) -- Adjust the wait time as needed
-    end
+ wait(0.1) 
+end
 end
 
 tab.newToggle("Auto Train", "Trains your Strength for you", true, function(toggleState)
     autoTrain = toggleState
     if autoTrain then
         print("Auto Train On")
-        spawn(startAutoTrain) -- Use spawn to avoid blocking the main thread
-    else
+        spawn(startAutoTrain) 
         print("Auto Train Off")
     end
 end)
@@ -50,8 +49,7 @@ tab.newToggle("Inf Wins Inf Power", "Gives you a lot of wins and power", true, f
     autoSpin = toggleState
     if autoSpin then
         print("Auto Spin On")
-        spawn(startAutoSpin) -- Use spawn to avoid blocking the main thread
-    else
+        spawn(startAutoSpin) 
         print("Auto Spin Off")
     end
 end)
@@ -60,7 +58,7 @@ tab.newToggle("Auto Rebirth", "Rebirths automatically", true, function(toggleSta
     autoRebirth = toggleState
     if autoRebirth then
         print("Auto Rebirth On")
-        spawn(startAutoRebirth) -- Use spawn to avoid blocking the main thread
+        spawn(startAutoRebirth)
     else
         print("Auto Rebirth Off")
     end
